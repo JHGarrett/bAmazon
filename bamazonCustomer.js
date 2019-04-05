@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-const cTable = require('console.table');
+var cTable = require('console.table');
 var inquirier = require("inquirer")
 
 var connection = mysql.createConnection({
@@ -36,7 +36,7 @@ function buyItems(){
                 }
             )
         }
-        console.log(consoleTable.getTable(table))
+        console.log(cTable.getTable(table))
         promptUser()
     })
 }
@@ -49,14 +49,14 @@ function mainMenu(){
                 name:"options",
                 message: "What would you like to do?",
                 type:"list",
-                choices:["Buy AN ITEM", "EXIT"]
+                choices:["Buy an ITEM", "EXIT"]
             }
         ]).then(function(r){
             if(r.options === "EXIT"){
                 console.log("GoodBye.")
                 connection.end();
             }else{
-                buyOption();
+                buyItems();
             }
         })
 }
